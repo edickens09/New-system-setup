@@ -1,9 +1,11 @@
+#Install git and setup Github
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
 gh auth login
 git config --global user.email "you@example.com"
 git config --global user.name "username"
 
+#Setup development filestructure
 cd ~
 mkdir workspace
 cd workspace
