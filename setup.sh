@@ -34,3 +34,19 @@ sudo apt-add-repository contrib non-free -y
 #Install Microsoft fonts
 sudo apt install ttf-mscorefonts-installer
 
+#Firefox install
+sudo apt purge firefox-esr
+#Import Mozilla Repo’s Key
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+wget -q https://packages.mozilla.org/apt/repo-signing-key.gpg -O- | sudo tee /etc/apt/keyrings/packages.mozilla.org.asc > /dev/null
+#Add Firefox Repo
+echo "deb [signed-by=/etc/apt/keyrings/packages.mozilla.org.asc] https://packages.mozilla.org/apt mozilla main" | sudo tee -a /etc/apt/sources.list.d/mozilla.list > /dev/null
+#Prioritize Mozilla Repo
+echo '
+Package: *
+Pin: origin packages.mozilla.org
+Pin-Priority: 1000
+' | sudo tee /etc/apt/preferences.d/mozilla
+#Install Firefox
+sudo apt update && sudo apt install firefox
+
