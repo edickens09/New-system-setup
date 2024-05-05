@@ -52,3 +52,9 @@ Pin-Priority: 1000
 #Install Firefox
 sudo apt update && sudo apt install firefox
 
+#remove base Vim in debian
+sudo apt purge vim-tiny
+#install neovim
+sudo apt-get install neovim
+#install python3 neovim
+sudo apt-get install python3-neovim
