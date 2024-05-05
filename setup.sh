@@ -66,3 +66,9 @@ aptinstall gnome-software-plugin-flatpak
 #add flatpak repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #restart system afterwards
+
+#install discord flatpak
+flatpak install flathub com.discordapp.Discord
+#run discord flatpak
+flatpak run com.discordapp.Discord
+
