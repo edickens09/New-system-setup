@@ -62,13 +62,13 @@ sudo apt-get install python3-neovim
 #install and setup flatpak
 apt install flatpak
 #install gnome flatpak
-aptinstall gnome-software-plugin-flatpak
+apt install gnome-software-plugin-flatpak
 #add flatpak repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #restart system afterwards
 
 #install discord flatpak
 flatpak install flathub com.discordapp.Discord
-#run discord flatpak
-flatpak run com.discordapp.Discord
+#run discord flatpak in background
+flatpak run com.discordapp.Discord &
 
