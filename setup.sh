@@ -72,3 +72,7 @@ flatpak install flathub com.discordapp.Discord
 #run discord flatpak in background
 flatpak run com.discordapp.Discord &
 
+#install Obsidian flatpak
+flatpak install flathub md.obsidian.Obsidian
+#Run Obsidian flatpak
+flatpak run md.obsidian.Obsidian
