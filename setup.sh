@@ -55,9 +55,11 @@ sudo apt update && sudo apt install firefox
 #remove base Vim in debian
 sudo apt purge vim-tiny
 #install neovim
-sudo apt-get install neovim
-#install python3 neovim
-sudo apt-get install python3-neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+# Add to .bashrc
+export PATH="$PATH:/opt/nvim-linux64/bin"
 
 #install and setup flatpak
 apt install flatpak
