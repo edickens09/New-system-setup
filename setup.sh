@@ -59,7 +59,8 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.
 sudo rm -rf /opt/nvim
 sudo tar -C /opt -xzf nvim-linux64.tar.gz
 # Add to .bashrc
-export PATH="$PATH:/opt/nvim-linux64/bin"
+echo 'export PATH=$PATH:/opt/nvim-linux64/bin' >> ~/.bashrc
+source ~/.bashrc
 
 #install and setup flatpak
 apt install flatpak
