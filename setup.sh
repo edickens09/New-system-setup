@@ -6,7 +6,7 @@ git config --global user.email "edickens09@gmail.com"
 git config --global user.name "edickens09"
 
 #Setup development filestructure
-cd ~ && mkdir workspace && cd workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
+cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
 
 # install pyenv dependants
 sudo apt update
@@ -57,25 +57,26 @@ echo 'export PATH=$PATH:/opt/nvim-linux64/bin' >> ~/.bashrc
 source ~/.bashrc
 
 #install and setup flatpak
-apt install flatpak
+sudo apt install flatpak
 #install gnome flatpak
-apt install gnome-software-plugin-flatpak
+sudo apt install gnome-software-plugin-flatpak
 #add flatpak repository
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 #restart system afterwards
 
 #install discord flatpak
 flatpak install flathub com.discordapp.Discord
-#run discord flatpak in background
-flatpak run com.discordapp.Discord &
-#resize flatpak cursor
-sudo flatpak override --env=XCURSOR_THEME=Adwaita com.discordapp.Discord
-sudo flatpak override --env=XCURSOR_SIZE=64 com.discordapp.Discord
-
-#install Obsidian flatpak
-flatpak install flathub md.obsidian.Obsidian
-#Run Obsidian flatpak
-flatpak run md.obsidian.Obsidian
 #Resize flatpak cursor
 sudo flatpak override --env=XCURSOR_THEME=Adwaita md.obsidian.Obsidian
 sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
+#run discord flatpak in background
+flatpak run com.discordapp.Discord &
+
+#install Obsidian flatpak
+flatpak install flathub md.obsidian.Obsidian
+#Resize flatpak cursor
+sudo flatpak override --env=XCURSOR_THEME=Adwaita md.obsidian.Obsidian
+sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
+#Run Obsidian flatpak
+flatpak run md.obsidian.Obsidian &
+
