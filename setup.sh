@@ -12,13 +12,13 @@ cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir ed
 sudo apt update
 sudo apt install -y build-essential zlib1g-dev libssl-dev
 sudo apt install -y libreadline-dev libbz2-dev libsqlite3-dev libffi-dev
-#install pyenv with Webi. These will be steps in comments with some commands
-
+#install pyenv with Webi
 #add to the bottom line of .bashrc
 echo 'xport PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+source ~/.bashrc
 #Webi install
 curl -sS https://webi.sh/pyenv | sh
 #Close terminal and reopen
