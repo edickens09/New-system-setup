@@ -13,7 +13,7 @@ sudo apt update
 sudo apt install -y build-essential zlib1g-dev libssl-dev
 sudo apt install -y libreadline-dev libbz2-dev libsqlite3-dev libffi-dev
 #install pyenv with Webi. These will be steps in comments with some commands
-code ~/.bashrc
+nano ~/.bashrc
 #add to the bottom line of the document
 # xport PYENV_ROOT="$HOME/.pyenv"
 # command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -80,3 +80,7 @@ sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
 #Run Obsidian flatpak
 flatpak run md.obsidian.Obsidian &
 
+#This is a test line
+echo 'This is
+a multiline
+test' >> ~/.bashrc
