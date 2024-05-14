@@ -80,8 +80,3 @@ sudo flatpak override --env=XCURSOR_THEME=Adwaita md.obsidian.Obsidian
 sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
 #Run Obsidian flatpak
 flatpak run md.obsidian.Obsidian &
-
-#This is a test line
-echo 'This is
-a multiline
-test' >> ~/.bashrc
