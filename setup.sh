@@ -47,6 +47,9 @@ Pin-Priority: 1000
 #Install Firefox
 sudo apt update && sudo apt install firefox
 
+#Install Go with Webi
+curl -sS https://webi.sh/golang | sh
+
 #remove base Vim in debian
 sudo apt purge vim-tiny
 #install neovim
@@ -80,3 +83,7 @@ sudo flatpak override --env=XCURSOR_THEME=Adwaita md.obsidian.Obsidian
 sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
 #Run Obsidian flatpak
 flatpak run md.obsidian.Obsidian &
+
+#Download and install Docker Script
+curl -0 https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
+sudo sh docker-install.sh
