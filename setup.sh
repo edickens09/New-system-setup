@@ -1,12 +1,10 @@
 #Install git and setup Github
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
+source ~/.config/envman/PATH.env
 gh auth login
 git config --global user.email "edickens09@gmail.com"
 git config --global user.name "edickens09"
-
-#Setup development filestructure
-cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
 
 # install pyenv dependants
 sudo apt update
@@ -21,8 +19,7 @@ eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 source ~/.bashrc
 #Webi install
 curl -sS https://webi.sh/pyenv | sh
-#Close terminal and reopen
-pyenv install
+source ~/.config/envman/PATH.env
 
 # Setup "non-Free" and "contrib" repositories
 sudo apt install software-properties-common -y
@@ -49,6 +46,7 @@ sudo apt update && sudo apt install firefox
 
 #Install Go with Webi
 curl -sS https://webi.sh/golang | sh
+source ~/.config/envman/PATH.env
 
 #remove base Vim in debian
 sudo apt purge vim-tiny
@@ -87,3 +85,6 @@ flatpak run md.obsidian.Obsidian &
 #Download and install Docker Script
 curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
 sudo sh docker-install.sh
+
+#Setup development filestructure
+cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
