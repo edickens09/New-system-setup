@@ -88,3 +88,6 @@ sudo sh docker-install.sh
 
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
+
+#Exit
+exit
