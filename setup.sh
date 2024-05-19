@@ -85,5 +85,5 @@ sudo flatpak override --env=XCURSOR_SIZE=64 md.obsidian.Obsidian
 flatpak run md.obsidian.Obsidian &
 
 #Download and install Docker Script
-curl -0 https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
+curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
 sudo sh docker-install.sh
