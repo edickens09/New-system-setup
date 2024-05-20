@@ -91,3 +91,11 @@ cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir ed
 
 #Exit
 exit
+
+#Test installs
+git --version
+go --version
+pyenv --version
+docker --version
+nvim --version
+flatpak --version
