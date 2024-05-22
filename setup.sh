@@ -12,7 +12,7 @@ sudo apt install -y build-essential zlib1g-dev libssl-dev
 sudo apt install -y libreadline-dev libbz2-dev libsqlite3-dev libffi-dev
 #install pyenv with Webi
 #add to the bottom line of .bashrc
-echo 'xport PYENV_ROOT="$HOME/.pyenv"
+echo 'export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
@@ -24,6 +24,11 @@ source ~/.config/envman/PATH.env
 # Setup "non-Free" and "contrib" repositories
 sudo apt install software-properties-common -y
 sudo apt-add-repository contrib non-free -y
+
+#i3 install and setup
+sudo apt update
+sudo apt install i3
+sudo apt install dmenu
 
 #Install Microsoft fonts
 sudo apt install ttf-mscorefonts-installer
