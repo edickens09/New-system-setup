@@ -1,10 +1,13 @@
+#Set shell to interactive
+#:/bin/bash -i
+
 #Install git and setup Github
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
 source ~/.config/envman/PATH.env
-gh auth login
-git config --global user.email "edickens09@gmail.com"
-git config --global user.name "edickens09"
+#gh auth login
+#git config --global user.email "edickens09@gmail.com"
+#git config --global user.name "edickens09"
 
 # install pyenv dependants
 sudo apt update
@@ -29,6 +32,7 @@ sudo apt-add-repository contrib non-free -y
 sudo apt update
 sudo apt install i3
 sudo apt install dmenu
+sudo apt install bash-completion
 
 #Install Microsoft fonts
 sudo apt install ttf-mscorefonts-installer
@@ -94,9 +98,6 @@ sudo sh docker-install.sh
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
 
-#Exit
-exit
-
 #Test installs
 git --version
 go --version
@@ -104,3 +105,8 @@ pyenv --version
 docker --version
 nvim --version
 flatpak --version
+i3 --version
+dmenu --version
+
+#Exit
+exit 
