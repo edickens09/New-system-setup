@@ -1,5 +1,5 @@
 #Set shell to interactive
-#:/bin/bash -i
+#!/bin/bash -i
 
 #Install git and setup Github
 sudo apt install git
@@ -8,21 +8,6 @@ source ~/.config/envman/PATH.env
 #gh auth login
 #git config --global user.email "edickens09@gmail.com"
 #git config --global user.name "edickens09"
-
-# install pyenv dependants
-sudo apt update
-sudo apt install -y build-essential zlib1g-dev libssl-dev
-sudo apt install -y libreadline-dev libbz2-dev libsqlite3-dev libffi-dev
-#install pyenv with Webi
-#add to the bottom line of .bashrc
-echo 'export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
-source ~/.bashrc
-#Webi install
-curl -sS https://webi.sh/pyenv | sh
-source ~/.config/envman/PATH.env
 
 # Setup "non-Free" and "contrib" repositories
 sudo apt install software-properties-common -y
