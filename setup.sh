@@ -20,6 +20,7 @@ sudo apt install ranger -y
 
 #Uninstall XFCE
 sudo apt remove 'xfce4*' -y
+sudo apt purge xfconf xfce4-session xfce4-panel xfce4-utils exo-utils thunar -y
 
 #Install Microsoft fonts
 sudo apt install ttf-mscorefonts-installer -y
@@ -79,6 +80,11 @@ sudo sh docker-install.sh
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
 
+#Editing .bashrc
+echo 'alias vim="nvim"' >> ~/.bashrc
+echo 'alias cd-"z"' >> ~/.bashrc
+echo 'EDITOR "opt/nvim-linux64/bin/nvim"' >> ~/.bashrc
+
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
 source ~/.config/envman/PATH.env
@@ -86,13 +92,8 @@ gh auth login
 git config --global user.email "edickens09@gmail.com"
 git config --global user.name "edickens09"
 
-#Editing .bashrc
-echo 'alias vim="nvim"' >> ~/.bashrc
-echo 'alias cd="z"' >> ~/.bashrc
-echo 'EDITOR "/opt/nvim-linux64/bin/nvim"' >> ~/.bashrc
-
 #Cleanup
-sudo apt autoremove
+sudo apt autoremove -y
 
 #Test installs
 git --version
