@@ -83,7 +83,7 @@ cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir ed
 #Editing .bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc
 echo 'alias cd-"z"' >> ~/.bashrc
-echo 'EDITOR "opt/nvim-linux64/bin/nvim"' >> ~/.bashrc
+echo 'export EDITOR=/opt/nvim-linux64/bin/nvim' >> ~/.bashrc
 
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
