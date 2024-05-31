@@ -2,7 +2,7 @@
 #!/bin/bash -i
 
 #Update system
-sudo apt update
+sudo apt update 
 sudo apt upgrade -y
 sudo apt-get update
 sudo apt-get upgrade -y
@@ -12,12 +12,14 @@ sudo apt install software-properties-common -y
 sudo apt-add-repository contrib non-free -y
 
 #some system installation stuff
-sudo apt install i3
-sudo apt install dmenu
-sudo apt install bash-completion
+sudo apt install i3 -y
+sudo apt install dmenu -y
+sudo apt install zoxide -y
+sudo apt install kitty -y
+sudo apt install ranger -y
 
-#Uninstall XFCE]
-#sudo apt remove xfce4
+#Uninstall XFCE
+sudo apt remove 'xfce4*' -y
 
 #Install Microsoft fonts
 sudo apt install ttf-mscorefonts-installer -y
@@ -84,18 +86,22 @@ gh auth login
 git config --global user.email "edickens09@gmail.com"
 git config --global user.name "edickens09"
 
+#Editing .bashrc
+echo 'alias vim="nvim"' >> ~/.bashrc
+echo 'alias cd="z"' >> ~/.bashrc
+echo 'EDITOR "/opt/nvim-linux64/bin/nvim"' >> ~/.bashrc
+
 #Cleanup
 sudo apt autoremove
 
 #Test installs
 git --version
 go --version
-#pyenv --version
 docker --version
 nvim --version
 flatpak --version
 i3 --version
 dmenu --version
 
-#Exit
-exit 
+#Reboot
+sudo systemctl reboot
