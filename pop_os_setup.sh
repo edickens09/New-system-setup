@@ -7,11 +7,9 @@ sudo apt upgrade -y
 sudo apt-get update
 sudo apt-get upgrade -y
 
-# Setup "non-Free" and "contrib" repositories
-sudo apt install software-properties-common -y
-
 #some system installation stuff
 sudo apt install zoxide -y
+
 sudo apt install ranger -y
 
 #Install Go with Webi
@@ -36,6 +34,9 @@ flatpak install flathub com.discordapp.Discord
 #install Obsidian flatpak
 flatpak install flathub md.obsidian.Obsidian
 
+#install Spotify
+flatpak install flathub com.spotify.Client
+
 #Download and install Docker Script
 curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
 sudo sh docker-install.sh
@@ -45,8 +46,9 @@ cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir ed
 
 #Editing .bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc
-echo 'alias cd-"z"' >> ~/.bashrc
+echo 'alias cd="z"' >> ~/.bashrc
 echo 'export EDITOR=/opt/nvim-linux64/bin/nvim' >> ~/.bashrc
+echo 'eval "$(zoxide init bash)"'
 
 sudo apt install git
 curl -sS https://webi.sh/gh | sh
