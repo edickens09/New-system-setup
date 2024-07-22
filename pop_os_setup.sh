@@ -44,6 +44,10 @@ sudo sh docker-install.sh
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
 
+#setup Neovim config
+cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
+cd lua && mkdir config && mkdir plugins && cd config && touch lazy.lua
+
 #Editing .bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc
 echo 'alias cd="z"' >> ~/.bashrc
