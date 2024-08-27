@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 #some system installation stuff
-sudo apt install zoxide -y
+curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
 sudo apt install ranger -y
 
@@ -38,8 +38,8 @@ flatpak install flathub md.obsidian.Obsidian
 flatpak install flathub com.spotify.Client
 
 #Download and install Docker Script
-curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install.sh
-sudo sh docker-install.sh
+cd Downloads
+curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install-pop.sh | sh
 
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
@@ -50,11 +50,14 @@ cd lua && mkdir config && mkdir plugins && cd config && touch lazy.lua
 
 #Editing .bashrc
 echo 'alias vim="nvim"' >> ~/.bashrc
-echo 'alias cd="z"' >> ~/.bashrc
 echo 'export EDITOR=/opt/nvim-linux64/bin/nvim' >> ~/.bashrc
 echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
+source ~/.bashrc
 
-sudo apt install git
+echo 'alias cd="z"' >> ~/.bashrc
+source ~/.bashrc
+
+sudo apt install git -y
 curl -sS https://webi.sh/gh | sh
 source ~/.config/envman/PATH.env
 gh auth login
@@ -63,12 +66,3 @@ git config --global user.name "edickens09"
 
 #Cleanup
 sudo apt autoremove -y
-
-#Test installs
-git --version
-go --version
-nvim --version
-flatpak --version
-
-#Reboot
-sudo systemctl reboot
