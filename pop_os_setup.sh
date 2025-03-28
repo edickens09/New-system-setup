@@ -37,12 +37,22 @@ flatpak install flathub md.obsidian.Obsidian
 #install Spotify
 flatpak install flathub com.spotify.Client
 
+#install Brave Browser
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+sudo apt update
+sudo apt install brave-browser
+
+#unistall Firefox Browswer
+sudo apt-get purge firefox
+sudo rm -Rf /etc/firefox/
+
 #Download and install Docker Script
 cd Downloads
 curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install-pop.sh | sh
 
 #Setup development filestructure
-cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09 && cd edickens09
+cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09
 
 #setup Neovim config
 cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
