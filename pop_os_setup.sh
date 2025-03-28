@@ -47,6 +47,29 @@ sudo apt install brave-browser
 sudo apt-get purge firefox
 sudo rm -Rf /etc/firefox/
 
+#Removal of the snap packaging as I don't like snap
+sudo systemctl stop snapd
+sudo systemctl disable snapd
+sudo systemctl mask snapd
+sudo apt purge snapd -y
+sudo apt-mark hold snapd
+
+#remove snap directories
+rm -rf ~/snap/
+
+#Prevent installation of snap with apt
+sudo cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
+Package: snapd
+Pin: release a=*
+Pin-Priority: -10
+EOF
+
+#remove leftover snap directories
+$ rm -rf ~/snap
+$ sudo rm -rf /snap
+$ sudo rm -rf /var/snap
+$ sudo rm -rf /var/lib/snapd
+
 #Download and install Docker Script
 cd Downloads
 curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install-pop.sh | sh
