@@ -76,6 +76,7 @@ curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docke
 
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09
+cd ~ && cd Workspace && mkdir Gitea && cd Gitea && mkdir eric
 
 #setup Neovim config
 cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
