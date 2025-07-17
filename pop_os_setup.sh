@@ -12,9 +12,8 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 
 sudo apt install ranger -y
 
-#Install Go with Webi
-curl -sS https://webi.sh/golang | sh
-source ~/.config/envman/PATH.env
+#Install Go
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/goSetup.sh | sh
 
 #install neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
@@ -91,12 +90,6 @@ source ~/.bashrc
 echo 'alias cd="z"' >> ~/.bashrc
 source ~/.bashrc
 
-sudo apt install git -y
-curl -sS https://webi.sh/gh | sh
-source ~/.config/envman/PATH.env
-gh auth login
-git config --global user.email "edickens09@gmail.com"
-git config --global user.name "edickens09"
-
+curl https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
 #Cleanup
 sudo apt autoremove -y
