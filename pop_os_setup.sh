@@ -71,7 +71,7 @@ $ sudo rm -rf /var/lib/snapd
 
 #Download and install Docker Script
 cd Downloads
-curl -O https://raw.githubusercontent.com/edickens09/docker-install/master/docker-install-pop.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/docker-install-pop.sh | sh
 
 #Setup development filestructure
 cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09
@@ -90,6 +90,7 @@ source ~/.bashrc
 echo 'alias cd="z"' >> ~/.bashrc
 source ~/.bashrc
 
+# install and setup git
 curl https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
 #Cleanup
 sudo apt autoremove -y
