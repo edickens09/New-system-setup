@@ -36,11 +36,8 @@ flatpak install flathub md.obsidian.Obsidian
 #install Spotify
 flatpak install flathub com.spotify.Client
 
-#install Brave Browser
-sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
-sudo apt update
-sudo apt install brave-browser
+#install Zen Browers
+flatpak install flathub app.zen_browser.zen
 
 #unistall Firefox Browswer
 sudo apt-get purge firefox
