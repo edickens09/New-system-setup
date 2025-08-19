@@ -91,3 +91,4 @@ source ~/.bashrc
 curl https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
 #Cleanup
 sudo apt autoremove -y
+
