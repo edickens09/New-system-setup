@@ -8,8 +8,11 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 #some system installation stuff
+
+#install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 
+#install ranger a cli file manager
 sudo apt install ranger -y
 
 #Install Go
@@ -22,22 +25,6 @@ sudo tar -C /opt -xzf nvim-linux64.tar.gz
 # Add to .bashrc
 echo 'export PATH=$PATH:/opt/nvim-linux64/bin' >> ~/.bashrc
 source ~/.bashrc
-
-#add flathub repository to flatpak
-flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-#restart system afterwards
-
-#install discord flatpak
-flatpak install flathub com.discordapp.Discord
-
-#install Obsidian flatpak
-flatpak install flathub md.obsidian.Obsidian
-
-#install Spotify
-flatpak install flathub com.spotify.Client
-
-#install Zen Browers
-flatpak install flathub app.zen_browser.zen
 
 #unistall Firefox Browswer
 sudo apt-get purge firefox
@@ -66,13 +53,9 @@ $ sudo rm -rf /snap
 $ sudo rm -rf /var/snap
 $ sudo rm -rf /var/lib/snapd
 
-#Download and install Docker Script
-cd Downloads
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/docker-install-pop.sh | sh
-
 #Setup development filestructure
-cd ~ && mkdir Workspace && cd Workspace && mkdir Github && cd Github && mkdir edickens09
-cd ~ && cd Workspace && mkdir Gitea && cd Gitea && mkdir eric
+cd ~ && mkdir Workspace && mkdir ./Workspace/Github  && mkdir ./Workspace/Github/edickens09
+mkdir ./Workspace/Gitea && mkdir ./Workspace/Gitea/eric
 
 #setup Neovim config
 cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
@@ -87,8 +70,15 @@ source ~/.bashrc
 echo 'alias cd="z"' >> ~/.bashrc
 source ~/.bashrc
 
+#install from scripts
+cd Downloads
+# install and setup docker
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/docker-install-pop.sh | sh
 # install and setup git
-curl https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
+# Install flathub and flatpak apps
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/flatpak.sh | sh
+
 #Cleanup
 sudo apt autoremove -y
 
