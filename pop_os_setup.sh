@@ -18,14 +18,6 @@ sudo apt install ranger -y
 #Install Go
 curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/goSetup.sh | sh
 
-#install neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
-sudo rm -rf /opt/nvim
-sudo tar -C /opt -xzf nvim-linux64.tar.gz
-# Add to .bashrc
-echo 'export PATH=$PATH:/opt/nvim-linux64/bin' >> ~/.bashrc
-source ~/.bashrc
-
 #unistall Firefox Browswer
 sudo apt-get purge firefox
 sudo rm -Rf /etc/firefox/
@@ -78,6 +70,8 @@ curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/doc
 curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
 # Install flathub and flatpak apps
 curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/flatpak.sh | sh
+#Install neovim from github release
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/nvim.sh | sh
 
 #Cleanup
 sudo apt autoremove -y
