@@ -7,5 +7,6 @@ if ! command nvim; then
 	#add to .bashrc
 	echo 'export PATH-$PATH:/opt/nvim-linux-x86_64/bin' >> ~/.bashrc
 	echo 'alias vim = "nvim"' >> ~/.bashrc
+	echo 'export EDITOR=/opt/nvm-linux-x86_64/bin/nvim' >> ~/.bashrc
 	source ~/.bashrc
 fi

@@ -12,14 +12,18 @@ sudo apt-get upgrade -y
 
 #some system installation stuff
 
+#install ranger a cli file manager
+sudo apt install ranger -y
+
+#unistall Firefox Browswer
+sudo apt-get purge firefox
+sudo rm -Rf /etc/firefox/
+
 #install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
 echo 'alias cd "z"' >> ~/.bashrc
 source ~/.bashrc
-
-#install ranger a cli file manager
-sudo apt install ranger -y
 
 #Install Go
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
@@ -31,10 +35,6 @@ else
 	exit 1
 fi
 
-#unistall Firefox Browswer
-sudo apt-get purge firefox
-sudo rm -Rf /etc/firefox/
-
 #removal of snap
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/snapRemove.sh -o "$tempDir/snapRemove.sh"
 
@@ -45,19 +45,15 @@ else
 	exit 1
 fi
 
-#Setup development filestructure
-mkdir -p ~/Workspace/Github/edickens09
-mkdir -p ~/Workspace/Gitea/eric
-
-#setup Neovim config
-cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
-cd lua && mkdir config && mkdir plugins && cd config && touch lazy.lua
-
-#Editing .bashrc
-echo 'export EDITOR=/opt/nvim-linux64/bin/nvim' >> ~/.bashrc
-
 # install and setup docker
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/docker-install-pop.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/dockerInstallPop.sh -o "$tempDir/dockerInstall.sh"
+if [-s "$tempDir/dockerInstall.sh"]; then
+	source "$tempDir/dockerInstall.sh"
+else
+	echo "Download failed"
+	exit 1
+fi
+
 # install and setup git
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/gitSetup.sh -o "$tempDir/gitSetup.sh"
 
@@ -69,9 +65,34 @@ else
 fi
 
 # Install flathub and flatpak apps
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh -o "$tempDir/flatpak.sh"
+
+if [-s "$tempDir/flatpak.sh"]; then
+	source "$tempDir/flatpak.sh"
+else
+	echo "Download failed flatpak"
+	exit 1
+fi
+
 #Install neovim from github release
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh -o "$tempDir/nvim.sh"
+
+if [-s "$tempDir/nvim.sh"]; then
+	source "$tempDir/nvim.sh"
+else
+	echo "Download failed nvim"
+	exit 1
+fi
+
+#Setup development filestructure
+mkdir -p ~/Workspace/Github/edickens09
+mkdir -p ~/Workspace/Gitea/eric
+
+#setup Neovim config
+#should I do this or should I wait until git is setup and then clone git repo?
+#mkdir -p ~/.config/nvim/lua/{config, plugins}
+#touch ~/.config/nvim/init.lua
+#touch ~/.config/nvim/lua/config/lazy.lua
 
 #sourceing the new .bashrc to have new command take effect
 source ~/.bashrc
@@ -79,3 +100,4 @@ source ~/.bashrc
 #Cleanup
 sudo apt autoremove -y
 
+exec "$SHELL"
