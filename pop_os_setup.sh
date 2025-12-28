@@ -16,7 +16,7 @@ curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh 
 sudo apt install ranger -y
 
 #Install Go
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/goSetup.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh | sh
 
 #unistall Firefox Browswer
 sudo apt-get purge firefox
@@ -65,13 +65,13 @@ source ~/.bashrc
 #install from scripts
 cd Downloads
 # install and setup docker
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/docker-install-pop.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/docker-install-pop.sh | sh
 # install and setup git
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/gitSetup.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/gitSetup.sh | sh
 # Install flathub and flatpak apps
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/flatpak.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh | sh
 #Install neovim from github release
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/master/nvim.sh | sh
+curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh | sh
 
 #Cleanup
 sudo apt autoremove -y
