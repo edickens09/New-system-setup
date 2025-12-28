@@ -1,7 +1,7 @@
 #Install go using webi
 
 if ! command -v go; then 
-	curl -sS https://webi.sh/golang | sh;\
+	curl -sS https://webi.sh/golang | sh
 	source ~/.config/envman/PATH.env
 
 	#change cgo to use zig

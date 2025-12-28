@@ -1,6 +1,9 @@
 #Set shell to interactive because certain things won't work otherwise
 #!/bin/bash -i
 
+tempDir = $(mktemp -d)
+trap 'rm -rf "$tempDir"' EXIT
+
 #Update system
 sudo apt update 
 sudo apt upgrade -y
@@ -11,67 +14,67 @@ sudo apt-get upgrade -y
 
 #install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
+echo 'alias cd "z"' >> ~/.bashrc
+source ~/.bashrc
 
 #install ranger a cli file manager
 sudo apt install ranger -y
 
 #Install Go
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
+
+if [ -s "$tempDir/goSetup.sh" ]; then
+	source "$tempDir/goSetup.sh"
+else
+	echo "Download failed"
+	exit 1
+fi
 
 #unistall Firefox Browswer
 sudo apt-get purge firefox
 sudo rm -Rf /etc/firefox/
 
-#Removal of the snap packaging as I don't like snap
-sudo systemctl stop snapd
-sudo systemctl disable snapd
-sudo systemctl mask snapd
-sudo apt purge snapd -y
-sudo apt-mark hold snapd
+#removal of snap
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/snapRemove.sh -o "$tempDir/snapRemove.sh"
 
-#remove snap directories
-rm -rf ~/snap/
-
-#Prevent installation of snap with apt
-sudo cat <<EOF | sudo tee /etc/apt/preferences.d/nosnap.pref
-Package: snapd
-Pin: release a=*
-Pin-Priority: -10
-EOF
-
-#remove leftover snap directories
-$ rm -rf ~/snap
-$ sudo rm -rf /snap
-$ sudo rm -rf /var/snap
-$ sudo rm -rf /var/lib/snapd
+if [ -s "$tempDir/snapRemove.sh"]; then
+	source "$tempDir/snapRemove.sh"
+else
+	echo "Download failed"
+	exit 1
+fi
 
 #Setup development filestructure
-cd ~ && mkdir Workspace && mkdir ./Workspace/Github  && mkdir ./Workspace/Github/edickens09
-mkdir ./Workspace/Gitea && mkdir ./Workspace/Gitea/eric
+mkdir -p ~/Workspace/Github/edickens09
+mkdir -p ~/Workspace/Gitea/eric
 
 #setup Neovim config
 cd ~ && cd .config && mkdir nvim && cd nvim && touch init.lua && mkdir lua
 cd lua && mkdir config && mkdir plugins && cd config && touch lazy.lua
 
 #Editing .bashrc
-echo 'alias vim="nvim"' >> ~/.bashrc
 echo 'export EDITOR=/opt/nvim-linux64/bin/nvim' >> ~/.bashrc
-echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
-source ~/.bashrc
 
-echo 'alias cd="z"' >> ~/.bashrc
-source ~/.bashrc
-
-#install from scripts
-cd Downloads
 # install and setup docker
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/docker-install-pop.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/docker-install-pop.sh | sh
 # install and setup git
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/gitSetup.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/gitSetup.sh -o "$tempDir/gitSetup.sh"
+
+if [-s "$tempDir/gitSetup.sh"]; then
+	source "$tempDir/gitSetup.sh"
+else
+	echo "Download failed"
+	exit 1
+fi
+
 # Install flathub and flatpak apps
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh | sh
 #Install neovim from github release
-curl -O https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh | sh
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh | sh
+
+#sourceing the new .bashrc to have new command take effect
+source ~/.bashrc
 
 #Cleanup
 sudo apt autoremove -y
