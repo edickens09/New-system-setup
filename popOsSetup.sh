@@ -22,24 +22,23 @@ sudo rm -Rf /etc/firefox/
 #install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
-echo 'alias cd "z"' >> ~/.bashrc
 source ~/.bashrc
-
-#Install Go
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
-
-if [ -s "$tempDir/goSetup.sh" ]; then
-	source "$tempDir/goSetup.sh"
-else
-	echo "Download failed"
-	exit 1
-fi
 
 #removal of snap
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/snapRemove.sh -o "$tempDir/snapRemove.sh"
 
 if [ -s "$tempDir/snapRemove.sh"]; then
 	source "$tempDir/snapRemove.sh"
+else
+	echo "Download failed"
+	exit 1
+fi
+
+#Install Go
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
+
+if [ -s "$tempDir/goSetup.sh" ]; then
+	source "$tempDir/goSetup.sh"
 else
 	echo "Download failed"
 	exit 1
