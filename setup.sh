@@ -67,8 +67,6 @@ if [ -s "$tempDir/zoxide.sh" ]; then
 else
     echo "Download failed"
 
-fi
-
 #Install Go
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
 
