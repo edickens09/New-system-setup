@@ -69,8 +69,6 @@ else
     echo "Download failed"
     exit 1
 
-fi
-
 #Install Go
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
 
@@ -78,46 +76,41 @@ if [ -s "$tempDir/goSetup.sh" ]; then
 	source "$tempDir/goSetup.sh"
 else
 	echo "Download failed"
-	exit 1
 fi
 
 # install and setup docker
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/dockerInstallPop.sh -o "$tempDir/dockerInstall.sh"
-if [-s "$tempDir/dockerInstall.sh"]; then
+if [ -s "$tempDir/dockerInstall.sh" ]; then
 	source "$tempDir/dockerInstall.sh"
 else
 	echo "Download failed"
-	exit 1
 fi
 
 # install and setup git
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/gitSetup.sh -o "$tempDir/gitSetup.sh"
 
-if [-s "$tempDir/gitSetup.sh"]; then
+if [ -s "$tempDir/gitSetup.sh" ]; then
 	source "$tempDir/gitSetup.sh"
 else
 	echo "Download failed"
-	exit 1
 fi
 
 # Install flathub and flatpak apps
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/flatpak.sh -o "$tempDir/flatpak.sh"
 
-if [-s "$tempDir/flatpak.sh"]; then
+if [ -s "$tempDir/flatpak.sh" ]; then
 	source "$tempDir/flatpak.sh"
 else
 	echo "Download failed flatpak"
-	exit 1
 fi
 
 #Install neovim from github release
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/nvim.sh -o "$tempDir/nvim.sh"
 
-if [-s "$tempDir/nvim.sh"]; then
+if [ -s "$tempDir/nvim.sh" ]; then
 	source "$tempDir/nvim.sh"
 else
 	echo "Download failed nvim"
-	exit 1
 fi
 
 #Setup development filestructure
@@ -132,4 +125,7 @@ if command -v apt >/dev/null 2>&1; then
     sudo apt autoremove -y
 fi
 
-exec "$SHELL"
+echo "Don't forget to install zig haven't scripted that yet"
+echo "Don't forget you have an SSH key for github that needs added"
+
+echo "Please close shell"
