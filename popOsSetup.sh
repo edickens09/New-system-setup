@@ -77,6 +77,15 @@ else
 	echo "Download failed nvim"
 fi
 
+#Install 1password
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/1password.sh -o "$tempDir/1password.sh"
+
+if [ -s "$tempDir/1password.sh" ]; then
+	source "$tempDir/1password.sh"
+else
+	echo "Download failed 1password"
+fi
+
 #Setup development filestructure
 mkdir -p ~/Workspace/Github/edickens09
 mkdir -p ~/Workspace/Gitea/eric
