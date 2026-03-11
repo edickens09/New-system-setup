@@ -120,6 +120,14 @@ else
     echo "Download failed 1password"
 fi
 
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/ghostty.sh -o "$tempDir/ghostty.sh"
+
+if [ -s "$tempDir/ghostty.sh" ]; then
+    source "$tempDir/ghostty.sh"
+else
+    echo "Download failed ghostty"
+fi
+
 #Setup development filestructure
 mkdir -p ~/Workspace/Github/edickens09
 mkdir -p ~/Workspace/Gitea/eric
