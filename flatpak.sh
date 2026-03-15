@@ -1,3 +1,15 @@
+if command -v apt >/dev/null 2>&1; then
+    if ! command flatpak; then
+        sudo apt install flatpak
+    fi
+fi
+
+if command -v dnf >/dev/nul 2&1; then
+    if ! command flatpak; then
+        sudo dnf install flatpak
+    fi
+fi
+
 #flathub repository install
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
