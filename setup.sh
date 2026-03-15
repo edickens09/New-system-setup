@@ -57,8 +57,8 @@ if [ -s "$tempDir/ranger.sh" ]; then
 else
     echo "Download failed"
     exit 1
-
 fi
+
 #install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/zoxide.sh -o "$tempDir/zoxide.sh"
 
@@ -120,14 +120,6 @@ if [ -s "$tempDir/1password.sh" ]; then
     source "$tempDir/1password.sh"
 else
     echo "Download failed 1password"
-fi
-
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/ghostty.sh -o "$tempDir/ghostty.sh"
-
-if [ -s "$tempDir/ghostty.sh" ]; then
-    source "$tempDir/ghostty.sh"
-else
-    echo "Download failed ghostty"
 fi
 
 #Setup development filestructure
