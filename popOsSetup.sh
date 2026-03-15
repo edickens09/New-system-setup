@@ -4,33 +4,53 @@
 tempDir = $(mktemp -d)
 trap 'rm -rf "$tempDir"' EXIT
 
-#Update system
-sudo apt update 
-sudo apt upgrade -y
-sudo apt-get update
-sudo apt-get upgrade -y
-
-#some system installation stuff
+if command -v apt >/dev/null 2>&1; then 
+    #Update system
+    sudo apt update 
+    sudo apt upgrade -y
+    sudo apt-get update
+    sudo apt-get upgrade -y
 
 #install ranger a cli file manager
-sudo apt install ranger -y
+    sudo apt install ranger -y
 
 #unistall Firefox Browswer
-sudo apt-get purge firefox
-sudo rm -Rf /etc/firefox/
+    sudo apt-get purge firefox
+    sudo rm -Rf /etc/firefox/
+    sudo rm -rf ~/.mozilla/firefox
+
+    #removal of snap
+    curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/snapRemove.sh -o "$tempDir/snapRemove.sh"
+
+    if [ -s "$tempDir/snapRemove.sh"]; then
+        source "$tempDir/snapRemove.sh"
+    else
+        echo "Download failed"
+	exit 1
+    fi
+
+fi
+
+if command -v dnf >/dev/null 2>&1; then 
+   #update system 
+    sudo dnf upgrade -y
+
+    #uninstall Firefox Browser
+    sudo dnf remove firefox
+    rm -rf ~/.mozilla/firefox
+
+fi
+
 
 #install zoxide which is used to replace cd
-curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
-source ~/.bashrc
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/zoxide.sh -o "$tempDir/zoxide.sh"
 
-#removal of snap
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/snapRemove.sh -o "$tempDir/snapRemove.sh"
+if [ -s "$tempDir/zoxide.sh" ]; then
+    source "tempDir/zoxide.sh"
 
-if [ -s "$tempDir/snapRemove.sh" ]; then
-    source "$tempDir/snapRemove.sh"
 else
     echo "Download failed"
+
 fi
 
 #Install Go
@@ -101,8 +121,10 @@ mkdir -p ~/Workspace/Gitea/eric
 #sourceing the new .bashrc to have new command take effect
 source ~/.bashrc
 
-#Cleanup
-sudo apt autoremove -y
+if command -v apt >/dev/null 2>&1; then
+    #Cleanup
+    sudo apt autoremove -y
+fi
 
 echo "Don't forget to install zig haven't scripted that yet"
 echo "Don't forget you have an SSH key for github that needs added"
