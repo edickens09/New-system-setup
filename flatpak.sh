@@ -1,6 +1,6 @@
 #!/bin/bash -i
 
-if ! command flatpak >/dev/null 2>$1; then
+if ! command flatpak >/dev/null 2>&1; then
 
     #apt install
     if command -v apt >/dev/null 2>&1; then
@@ -8,7 +8,7 @@ if ! command flatpak >/dev/null 2>$1; then
     fi
 
     #dnf install
-    if command -v dnf >/dev/nul 2&1; then
+    if command -v dnf >/dev/nul 2>&1; then
         sudo dnf install flatpak -y
     fi
 fi
