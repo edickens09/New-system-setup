@@ -1,3 +1,6 @@
+#!/bin/bash -i
+
+#apt install
 if command -v apt >/dev/null 2>&1; then
     # Remove unofficial Docker packages
     for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -21,6 +24,7 @@ if command -v apt >/dev/null 2>&1; then
 
 fi
 
+#dnf install
 if command -v dnf >/dev/null 2>&1; then
 
     #remove old version of docker package
