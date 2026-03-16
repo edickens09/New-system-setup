@@ -1,5 +1,5 @@
-#Set shell to interactive because certain things won't work otherwise
 #!/bin/bash -i
+#Set shell to interactive because certain things won't work otherwise
 
 tempDir = $(mktemp -d)
 trap 'rm -rf "$tempDir"' EXIT
@@ -37,16 +37,36 @@ if command -v dnf >/dev/null 2>&1; then
 
     #uninstall Firefox Browser
     sudo dnf remove firefox
+    sudo dnf -Rf /etc/firefox
     rm -rf ~/.mozilla/firefox
 
+    curl --sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/cosmicSetup.sh -o "$tempDir/cosmicSetup.sh" 
+
+    if [ -s "$tempDir/cosmicSetup.sh" ]; then
+        source "$tempDir/zoxide.sh"
+
+    else
+        echo "Download failed"
+        exit 1
+    fi
 fi
 
+#install ranger cli file mangaer
+curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/ranger.sh -o "$tempDir/ranger.sh"
 
+if [ -s "$tempDir/ranger.sh" ]; then
+    source "$tempDir/ranger.sh"
+
+else
+    echo "Download failed"
+    exit 1
+
+fi
 #install zoxide which is used to replace cd
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/zoxide.sh -o "$tempDir/zoxide.sh"
 
 if [ -s "$tempDir/zoxide.sh" ]; then
-    source "tempDir/zoxide.sh"
+    source "$tempDir/zoxide.sh"
 
 else
     echo "Download failed"

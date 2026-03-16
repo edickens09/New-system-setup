@@ -1,6 +1,7 @@
+#!/bin/bash -i
 #Install go using webi
 
-if ! command -v go; then 
+if ! command -v go >/dev/null 2>&1; then 
 	curl -sS https://webi.sh/golang | sh
 	source ~/.config/envman/PATH.env
 

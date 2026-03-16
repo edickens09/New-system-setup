@@ -1,3 +1,4 @@
+#!/bin/bash -i
 #removal of the snap packaging, I don't like snap
 sudo systemctl stop snapd
 sudo systemctl disable snapd

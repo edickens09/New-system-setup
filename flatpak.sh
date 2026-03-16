@@ -1,12 +1,15 @@
-if command -v apt >/dev/null 2>&1; then
-    if ! command flatpak; then
-        sudo apt install flatpak
-    fi
-fi
+#!/bin/bash -i
 
-if command -v dnf >/dev/nul 2&1; then
-    if ! command flatpak; then
-        sudo dnf install flatpak
+if ! command flatpak >/dev/null 2>$1; then
+
+    #apt install
+    if command -v apt >/dev/null 2>&1; then
+        sudo apt install flatpak -y
+    fi
+
+    #dnf install
+    if command -v dnf >/dev/nul 2&1; then
+        sudo dnf install flatpak -y
     fi
 fi
 
@@ -14,13 +17,13 @@ fi
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
 #Install Discord
-flatpak install flathub com.discordapp.Discord
+flatpak install --user -y --noninteractive flathub com.discordapp.Discord
 
 #Insall Obsidian
-flatpak install flathub md.obsidian.Obsidian
+flatpak install --user -y --noninteractive flathub md.obsidian.Obsidian
 
 #Install Spotify
-flatpak install flathub com.spotify.Client
+flatpak install --user -y --noninteractive flathub com.spotify.Client
 
 #Install Zen Browser
-flatpak install flathub app.zen_browser.zen
+flatpak install --user -y --noninteractive flathub app.zen_browser.zen

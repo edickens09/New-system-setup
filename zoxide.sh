@@ -1,19 +1,21 @@
-if command -v apt >/dev/null 2>&1; then
-    if ! command -v zoxide; then
+#!/bin/bash -i
+
+if ! command -v zoxide >/dev/null 2>&1; then
+
+    #apt install
+    if command -v apt >/dev/null 2>&1; then
         curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
         echo 'eval "$(zoxide init bash)"' >> ~/.bashrc
         source ~/.bashrc
 
-        sudo apt install fzf
+        sudo apt install fzf -y 
     fi
 
-fi
+    #dnf install
+    if command -v dnf >/dev/null 2>&1; then
+        sudo dnf install zoxide -y
 
-if command -v dnf >/dev/null 2>&1; then
-    if ! command -v zoxide; then
-        sudo dnf install zoxide
-
-        sudo dnf install fzf
+        sudo dnf install fzf -y 
     fi
 
 fi
