@@ -56,7 +56,6 @@ if [ -s "$tempDir/ranger.sh" ]; then
 
 else
     echo "Download failed"
-    exit 1
 fi
 
 #install zoxide which is used to replace cd
@@ -67,7 +66,8 @@ if [ -s "$tempDir/zoxide.sh" ]; then
 
 else
     echo "Download failed"
-    exit 1
+
+fi
 
 #Install Go
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
