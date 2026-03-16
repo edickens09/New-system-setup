@@ -11,9 +11,6 @@ if command -v apt >/dev/null 2>&1; then
     sudo apt-get update
     sudo apt-get upgrade -y
 
-#install ranger a cli file manager
-    sudo apt install ranger -y
-
 #unistall Firefox Browswer
     sudo apt-get purge firefox
     sudo rm -Rf /etc/firefox/
