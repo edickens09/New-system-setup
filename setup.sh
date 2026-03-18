@@ -22,7 +22,7 @@ if command -v apt >/dev/null 2>&1; then
     if [ -s "$tempDir/snapRemove.sh"]; then
         source "$tempDir/snapRemove.sh"
     else
-        echo "Download failed"
+        echo "Download failed snap removal"
 	exit 1
     fi
 
@@ -40,10 +40,10 @@ if command -v dnf >/dev/null 2>&1; then
     curl --sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/cosmicSetup.sh -o "$tempDir/cosmicSetup.sh" 
 
     if [ -s "$tempDir/cosmicSetup.sh" ]; then
-        source "$tempDir/zoxide.sh"
+        source "$tempDir/cosmicSetup.sh"
 
     else
-        echo "Download failed"
+        echo "Download failed Cosmic Desktop"
         exit 1
     fi
 fi
@@ -55,7 +55,7 @@ if [ -s "$tempDir/ranger.sh" ]; then
     source "$tempDir/ranger.sh"
 
 else
-    echo "Download failed"
+    echo "Download failed ranger"
 fi
 
 #install zoxide which is used to replace cd
@@ -65,7 +65,7 @@ if [ -s "$tempDir/zoxide.sh" ]; then
     source "$tempDir/zoxide.sh"
 
 else
-    echo "Download failed"
+    echo "Download failed zoxide"
 
 #Install Go
 curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/goSetup.sh -o "$tempDir/goSetup.sh"
@@ -73,7 +73,7 @@ curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/go
 if [ -s "$tempDir/goSetup.sh" ]; then
     source "$tempDir/goSetup.sh"
 else
-    echo "Download failed"
+    echo "Download failed golang"
 fi
 
 # install and setup docker
@@ -81,7 +81,7 @@ curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/do
 if [ -s "$tempDir/dockerInstall.sh" ]; then
     source "$tempDir/dockerInstall.sh"
 else
-    echo "Download failed"
+    echo "Download failed docker"
 fi
 
 # install and setup git
@@ -90,7 +90,7 @@ curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/gi
 if [ -s "$tempDir/gitSetup.sh" ]; then
     source "$tempDir/gitSetup.sh"
 else
-    echo "Download failed"
+    echo "Download failed git"
 fi
 
 # Install flathub and flatpak apps
@@ -118,14 +118,6 @@ if [ -s "$tempDir/1password.sh" ]; then
     source "$tempDir/1password.sh"
 else
     echo "Download failed 1password"
-fi
-
-curl -sSfL https://raw.githubusercontent.com/edickens09/New-system-setup/main/ghostty.sh -o "$tempDir/ghostty.sh"
-
-if [ -s "$tempDir/ghostty.sh" ]; then
-    source "$tempDir/ghostty.sh"
-else
-    echo "Download failed ghostty"
 fi
 
 #Setup development filestructure
